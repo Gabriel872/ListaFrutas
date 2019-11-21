@@ -2,7 +2,10 @@ package br.com.rbeninca.listafrutas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -20,6 +23,20 @@ public class ListagemFrutasListViewActivity extends AppCompatActivity {
         FrutaAdapterListView adapter = new FrutaAdapterListView(getApplicationContext(), R.layout.template_item_fruta,
                 frutaController.FRUTAS);
         listView.setAdapter(adapter);
+
+
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(),ExibeFrutas.class);
+
+                intent.putExtra("id", i);
+
+                startActivity(intent);
+            }
+        });
 
     }
 }

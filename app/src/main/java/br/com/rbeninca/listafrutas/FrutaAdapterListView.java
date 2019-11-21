@@ -36,7 +36,9 @@ class FrutaAdapterListView extends ArrayAdapter<Fruta>{
         //Associando objetos da interface a identificadores locais
 
         TextView tvCodigo = convertView.findViewById(R.id.tvCodigo);
+        TextView tvNome = convertView.findViewById(R.id.tvNome);
         TextView tvPreco = convertView.findViewById(R.id.tvPreco);
+        TextView tvPrecoVenda = convertView.findViewById(R.id.tvPrecoVenda);
 
         ImageView imageView = convertView.findViewById(R.id.imageView);
 
@@ -46,12 +48,12 @@ class FrutaAdapterListView extends ArrayAdapter<Fruta>{
 
         DecimalFormat df = new DecimalFormat( "#,###.00");
 
-        //Populando as views do layout inflado
+        //------------------Populando as views do layout inflado------------------
 
         tvCodigo.setText(Integer.toString(f.getCodigo()));
-
+        tvNome.setText(f.getNome());
         imageView.setImageResource(f.getImagem());
-
+        tvPrecoVenda.setText(df.format(f.getPreco_venda()));
         tvPreco.setText(df.format(f.getPreco()));
 
         return convertView;
